@@ -3,15 +3,15 @@
 import json, requests, sys
 
 url = 'https://wtfismyip.com/json'
-r = None
+response = None
 
 try:
-    r = requests.get(url)
+    response = requests.get(url)
 except requests.ConnectionError:
     # Fail elegantly if the server can't be reached
     print('Connection failed, check your internet connection.')
     sys.exit(1)
 
-ip = json.loads(r.content)
+ip = json.loads(response.content)
 
 print(ip['YourFuckingIPAddress'])
